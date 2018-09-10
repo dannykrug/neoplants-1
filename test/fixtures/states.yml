@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  max_hp: 1
+  water_need: 1
+  soil_need: 1
+  img_url: MyString
+  plant_type_id: 1
+
+two:
+  name: MyString
+  max_hp: 1
+  water_need: 1
+  soil_need: 1
+  img_url: MyString
+  plant_type_id: 1

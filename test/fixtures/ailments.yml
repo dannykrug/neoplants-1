@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ailment_type: MyString
+  action_id: 1
+
+two:
+  ailment_type: MyString
+  action_id: 1

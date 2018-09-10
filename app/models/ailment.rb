@@ -1,0 +1,2 @@
+class Ailment < ApplicationRecord
+end

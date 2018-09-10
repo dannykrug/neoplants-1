@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  water_points: 1
+  soil_points: 
+  hp: 
+  state_id: 
+  ailment_id: 1
+
+two:
+  name: MyString
+  water_points: 1
+  soil_points: 
+  hp: 
+  state_id: 
+  ailment_id: 1
