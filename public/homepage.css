@@ -1,0 +1,41 @@
+.headerReplacement {
+   text-indent: -9999px;
+   width: 600px;
+   height: 116px;
+   background: url(/homepage/images/neoplants_title_web.jpg) #cccccc no-repeat;
+}
+
+.loginReplacement {
+   text-indent: -9999px;
+   width: 250px;
+   height: 95px;
+   background: url(/homepage/images/login_button_web.jpg) #cccccc no-repeat;
+   display: inline-block;
+}
+
+.signupReplacement {
+   text-indent: -9999px;
+   width: 312px;
+   height: 95px;
+   background: url(/homepage/images/sign_up_button_web.jpg) #cccccc no-repeat;
+   display: inline-block;
+}
+
+.titleCenter {
+  display: flex;
+  justify-content: center; align-items: center;
+  margin-top: 325px;
+}
+
+.gutsCenter {
+  display: flex;
+  justify-content: center; align-items: center;
+}
+
+
+body {
+  background: url(/homepage/images/flower_final1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

@@ -1,0 +1,22 @@
+.gutsCenter {
+  display: flex;
+  justify-content: center; align-items: center;
+}
+
+.titleCenter {
+  display: flex;
+  justify-content: center; align-items: center;
+  margin-top: 325px;
+}
+
+.plantsCorner {
+  display: flex;
+  justify-content: flex-end; align-items: flex-end;
+}
+
+body
+{
+    background-color: #228B22;
+    font-family: 'Press Start 2P', cursive;
+    color: #FFB6C1;
+}
