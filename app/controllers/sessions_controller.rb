@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
               redirect_to plants_death_path
             end
           end
-          redirect_to '/plant_homepage'
+          redirect_to '/plants/plant_homepage'
         else
           redirect_to '/plants/seed'
         end
@@ -25,10 +25,6 @@ class SessionsController < ApplicationController
       redirect_to '/login'
     end
   end
-
-  def plant_homepage
-  end
-
   def destroy
     session.delete :user_id
     #maybe have to redirect to a general homepage later

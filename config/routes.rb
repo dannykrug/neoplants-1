@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post "/personality_quiz", to: "plants#create_personality"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
-  get "/plant_homepage", to: "sessions#plant_homepage"
+  get "/plants", to: "plants#index"
   delete "/logout", to: "sessions#destroy"
 
 
