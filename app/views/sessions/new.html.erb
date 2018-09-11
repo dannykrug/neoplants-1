@@ -1,8 +1,18 @@
-<h1>Login into my website.</h1>
+<link rel="stylesheet" href="login.css">
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
+<div class="titleCenter">
+<h1>LOGIN TO MY NEOPLANTS</h1></div>
+<div class="gutsCenter">
 <%= form_tag "/login", method: "post" do %>
   <%= label_tag :username %>
   <%= text_field_tag :username %>
   <%= label_tag :password %>
   <%= password_field_tag :password %>
-  <%= submit_tag "Log in!" %>
+  <%= submit_tag "Hello Plants!" %>
 <% end %>
+</div>
+
+<div class="plantsCorner">
+<img src="https://thumbs.gfycat.com/TastyFantasticAmericanredsquirrel-small.gif" alt="Tiny Dancing Pixel Plants...">
+</div>
