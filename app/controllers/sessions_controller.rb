@@ -7,16 +7,16 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       if !@user.plants.empty?
-        if @user.passed_tutorial?
+        if @user.passed_tutorial
           @user.plants.each do |plant|
-            plant.hp -= 1
-            if plant.hp <= 0
-              redirect_to plants_death_path
+            if plant.hp >= 1
+              plant.hp -= 1
             end
           end
-          redirect_to '/plant_homepage'
+          redirect_to '/plants/plant_homepage'
         else
-          redirect_to '/plants/seed'
+          # plant = current_user.plants.first
+          redirect_to "/plants/seed"
         end
       else
         redirect_to '/personality_quiz'
@@ -25,10 +25,6 @@ class SessionsController < ApplicationController
       redirect_to '/login'
     end
   end
-
-  def plant_homepage
-  end
-
   def destroy
     session.delete :user_id
     #maybe have to redirect to a general homepage later

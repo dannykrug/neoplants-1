@@ -1,0 +1,8 @@
+ <h1>Add A Plant to Your Collection!</h1>
+ <%= form_for @plant do |f| %>
+   <%= f.label :state_id, "Plant Type" %>
+   <%= f.collection_select :state_id, @states, :id, :plant_type_name%><br>
+   <%= f.label :name, "Name Your Plant!" %>
+   <%= f.text_field :name %><br>
+   <%= f.submit %>
+ <% end %>

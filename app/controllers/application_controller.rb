@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   def homepage
 
     if session[:user_id]
-      render '/sessions/create'
+      redirect_to plants_path
     else
       render '/homepage', :layout => false
     end

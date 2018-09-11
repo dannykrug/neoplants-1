@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 2018_09_11_020100) do
 
   create_table "plants", force: :cascade do |t|
     t.string "name"
-    t.integer "water_points"
-    t.integer "soil_points"
-    t.float "hp"
+    t.integer "water_points", default: 1
+    t.integer "soil_points", default: 1
+    t.float "hp", default: 1.0
     t.integer "state_id"
     t.integer "ailment_id"
     t.datetime "created_at", null: false
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2018_09_11_020100) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "passed_tutorial?", default: false
+    t.boolean "passed_tutorial", default: false
   end
 
 end

@@ -6,8 +6,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.name = params[:user][:first_name] + " " + params[:user][:last_name]
+    user_actions = []
+    Action.all.each do |action|
+      UserAction.create(user: current_user, action:action)
+    end
     if @user.valid?
-      @user
+      #give user ability to perform all actions
       @user.save
       session[:user_id]= @user.id
       #TO DO: associate user with actions

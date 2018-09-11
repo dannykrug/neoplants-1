@@ -6,12 +6,17 @@ class User < ApplicationRecord
   @@female_options = ["Muffins", "Drake", "Vodka", "Williamsburg", "Poodles", "Salad", "Team Edward", "Thai", "Condtioner"]
   @@male_options = ["Scones", "Kanye West", "Whiskey", "Bushwick", "Pugs", "Soup", "Team Jacob", "Chinese", "Shampoo"]
 
+  #should take a plant variable to associate with
   def add_user_actions
     Action.all.each do |action|
       UserAction.create(user: self, action: action)
     end
   end
-  
+  # 
+  # def passed_tutorial?=(bool)
+  #   self.passed_tutorial?=bool
+  # end
+
   def self.female_options
     @@female_options
   end
