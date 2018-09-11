@@ -6,11 +6,24 @@ class PlantsController < ApplicationController
   def show
     current_user.update(passed_tutorial:true)
     @plant = Plant.find(params[:id])
+    @plant_type = @plant.state.plant_type
+    @state = @plant.state
+
+    @filled_hp = @plant.hp
+    @empty_hp = @state.max_hp - @filled_hp
+
+    @filled_water_points = @plant.water_points
+    @empty_water_points = @state.water_need - @filled_water_points
+
+    @filled_soil_points = @plant.soil_points
+    @empty_soil_points = @state.soil_need - @filled_soil_points
+
+    @ailment = @plant.ailment
   end
 
   def index
     @plants = current_user.plants
-    render :plant_homepage
+    # render :plant_homepage
   end
 
   def new

@@ -1,13 +1,71 @@
-<h1>Plant Name: <%= @plant.name %></h1>
 <div class="action_bar">
-
+  <h2>-ACTIONS-</h2>
+  <% current_user.actions.each do |action| %>
+    <%= link_to action.name, "#" %><br>
+  <% end %>
 </div>
 
 <div class="plant_display">
-
+  <h1>Plant Name: <%= @plant.name %></h1>
+  <% if @plant_type.name == "Cactus" %>
+    <img src="/app/assets/images/Plant_Gifs/Cactus/Cactus Bae.gif">
+  <% elsif @plant_type.name == "Rose" %>
+    <img src="/app/assets/images/Plant_Gifs/Rose/Rose.gif">
+  <% end %>
 </div>
 
 <div class="plant_stats">
+  <h2>Plant Stats</h2>
+  <div class="hearts">
+    <!-- Create a variable # of filled hearts -->
+    <% @filled_hp.to_i.times do |x| %>
+      <img src="/app/assets/images/Plant_Gifs/HP/HP Heart - Full OUTLINE.gif">
+    <% end %>
+    <!-- Create a variable # of empty hearts -->
+    <% @empty_hp.to_i.times do |x| %>
+      <img src="/app/assets/images/Plant_Gifs/HP/HP Heart - Empty.gif" >
+      <!-- <img src="/app/assets/images/Plant_Gifs/HP/HP Heart - Full.gif"> -->
+    <% end %>
+  </div>
+  <br>
+
+  <div class="waters">
+
+
+        <% @filled_water_points.to_i.times do |x| %>
+          Image of filled water droplet goes here
+          <!-- <img src="/app/assets/images/Plant_Gifs/HP/HP Heart - Full.gif"> -->
+        <% end %>
+        <% @empty_water_points.to_i.times do |x| %>
+          Image of empty water droplet goes here
+          <!-- <img src="/app/assets/images/Plant_Gifs/HP/HP Heart - Full.gif"> -->
+        <% end %>
+
+  </div>
+  <br>
+
+  <div class="soil">
+    <% @filled_soil_points.to_i.times do |x| %>
+      Image of filled dirt goes here
+      <!-- <img src="/app/assets/images/Plant_Gifs/HP/HP Heart - Full.gif"> -->
+    <% end %>
+    <% @empty_soil_points.to_i.times do |x| %>
+      Image of empty dirt goes here
+      <!-- <img src="/app/assets/images/Plant_Gifs/HP/HP Heart - Full.gif"> -->
+    <% end %>
+  </div>
+  <br>
+
+  <% if @ailment != nil %>
+    <h2> Ailment: </h2>
+    <div class="ailment">
+      <%= @ailment.ailment_type %>
+    </div>
+
+  <% end %>
+
+  <br>
+
 
 </div>
 <%= render "action_bar" %>
