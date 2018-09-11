@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_10_220555) do
+ActiveRecord::Schema.define(version: 2018_09_11_020100) do
 
   create_table "actions", force: :cascade do |t|
     t.string "name"
@@ -36,16 +36,17 @@ ActiveRecord::Schema.define(version: 2018_09_10_220555) do
     t.string "name"
     t.integer "water_points"
     t.integer "soil_points"
-    t.integer "hp"
+    t.float "hp"
     t.integer "state_id"
     t.integer "ailment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "states", force: :cascade do |t|
     t.string "name"
-    t.integer "max_hp"
+    t.float "max_hp"
     t.integer "water_need"
     t.integer "soil_need"
     t.string "img_url"
@@ -70,6 +71,7 @@ ActiveRecord::Schema.define(version: 2018_09_10_220555) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "passed_tutorial?", default: false
   end
 
 end

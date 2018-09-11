@@ -4,7 +4,7 @@ class CreatePlants < ActiveRecord::Migration[5.2]
       t.string :name
       t.integer :water_points
       t.integer :soil_points
-      t.integer :hp
+      t.float :hp
       t.integer :state_id
       t.integer :ailment_id
 
