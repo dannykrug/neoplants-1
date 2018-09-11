@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2018_09_11_020100) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "passed_tutorial?", default: false
+    t.boolean "passed_tutorial", default: false
   end
 
 end

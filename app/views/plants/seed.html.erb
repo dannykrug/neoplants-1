@@ -1,2 +1,11 @@
-You got a <%= current_user.plants.first.plant_type_name %>
-<img src="/app/assets/images/Rose_Seedling_Grow.gif">
+<h1>Here's a bag of seeds</h1>
+<img src="/app/assets/images/Plant_Gifs/Seeds/Seed Packet .gif"><br>
+<img src="/app/assets/images/Plant_Gifs/Seeds/Seed Packet - Open.gif"><br>
+<!--  tag the actions below as action buttons-->
+<p>Why don't you try adding water or soil? </p>
+<div class="action_bar">
+  <h2>-Actions-</h2>
+  <!-- <% byebug %> -->
+  <%= link_to "Add Water", current_user.plants.first %><br>
+  <%= link_to "Add Soil", current_user.plants.first %><br>
+</div>

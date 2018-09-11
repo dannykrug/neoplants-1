@@ -2,5 +2,6 @@
 <ul>
   <% @plants.each do |plant| %>
     <li><%= link_to plant.name, plant%></li>
+    <%= button_to "Kill #{plant.name}", plant, method: :delete, data: {confirm: "Are you sure you want to kill #{plant.name}?"} %>
   <% end %>
 </ul>

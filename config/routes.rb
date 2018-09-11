@@ -2,8 +2,10 @@ Rails.application.routes.draw do
 
   root 'application#homepage'
   get '/', to: "application#homepage"
+  get '/plants/plant_homepage', to: "plants#index"
   get "/plants/seed", to: "plants#seed"
   get "/plants/death", to: "plants#death"
+  get "/plants", to: "plants#index"
   resources :plants
   get "/signup", to: "users#new"
   post "/users", to: "users#create"
@@ -11,7 +13,7 @@ Rails.application.routes.draw do
   post "/personality_quiz", to: "plants#create_personality"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
-  get "/plants", to: "plants#index"
+
   delete "/logout", to: "sessions#destroy"
 
 

@@ -1,7 +1,10 @@
 class PlantsController < ApplicationController
   before_action :require_login
 
+  def death
+  end
   def show
+    current_user.update(passed_tutorial:true)
     @plant = Plant.find(params[:id])
   end
 
@@ -42,13 +45,13 @@ class PlantsController < ApplicationController
   def destroy
     @plant = Plant.find(params[:id])
     @name = @plant.name
-    @reason = Plant.death_message.sample
     @plant.destroy
     redirect_to plants_death_path
   end
 
   def seed
-    @plant = current_user.plants.first
+    #add water and soil actions to the user
+    # @plant = Plant.find(params[:id])
   end
 
 
@@ -75,10 +78,13 @@ class PlantsController < ApplicationController
     else
       plant_type = PlantType.find_by(name: "Cactus")
     end
-    @plant = Plant.create(user: User.find(session[:user_id]), name: params[:plant_name], water_points: 1, soil_points: 1, hp:1, state: State.find_by(name: "Seedling", plant_type: plant_type))
-    @user = User.find(session[:user_id])
-    @user.add_user_actions
-    @user.save
+    #create plant
+    @plant = Plant.create(user: User.find(session[:user_id]), name: params[:plant_name], state: State.find_by(name: "Seedling", plant_type: plant_type))
+    #need to bind useractions to that plant
+    current_user.add_user_actions
+    # @user = User.find(session[:user_id])
+
+    current_user.save
     redirect_to plants_seed_path
   end
 
@@ -86,7 +92,7 @@ class PlantsController < ApplicationController
   private
 
   def require_login
-    redirect_to '/login' unless session.include? :user_id
+    redirect_to '/' unless session.include? :user_id
   end
 
   def plant_params
