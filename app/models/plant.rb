@@ -6,4 +6,8 @@ class Plant < ApplicationRecord
   def plant_type
     self.state.plant_type
   end
+
+  def self.death_message
+    @@death_message
+  end
 end
