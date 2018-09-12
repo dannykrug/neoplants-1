@@ -21,6 +21,8 @@ class PlantsController < ApplicationController
     @filled_soil_points = @plant.soil_points
     @empty_soil_points = @state.soil_need - @filled_soil_points
 
+    #maybe have a random number picker that picks when a plant will randomly get
+    #hit with an ailment, randomize from list of ailments
     @ailment = @plant.ailment
   end
 
@@ -105,18 +107,31 @@ class PlantsController < ApplicationController
   end
 
   def actions
-    # byebug
     @plant = Plant.find(params[:id])
     @action_name = Action.find(params[:action_id]).name
-    if @action_name == "Add Soil"
+    @ailment = @plant.ailment
+    #can add else statement flash message pop up "That didn't work try again"
+    if @action_name == "Add Soil" && @plant.soil_points < @plant.state.soil_need
       #verify that it doesn't max out later
       soil_points = @plant.soil_points + 1
       @plant.update(soil_points:soil_points)
-    elsif @action_name == "Add Water"
-    elsif @action_name == "Move to Sunlight"
-    elsif @action_name == "Shout"
-    elsif @action_name == "Whisper Sweet Nothings & Stroke the Leaves"
+    elsif @action_name == "Add Water" && @plant.water_points < @plant.state.water_need
+      water_points = @plant.water_points + 1
+      @plant.update(water_points:water_points)
+    elsif @action_name == "Move to Sunlight" && @ailment && @ailment.action.name == @action_name
+      @plant.update(ailment_id:nil)
+    elsif @action_name == "Shout" && @ailment && @ailment.action.name == @action_name
+      @plant.update(ailment_id:nil)
+    elsif @action_name == "Whisper Sweet Nothings & Stroke the Leaves" && @ailment && @ailment.action.name == @action_name
+      @plant.update(ailment_id:nil)
+    elsif @action_name == "Whisper Sweet Nothings & Stroke the Leaves" && @plant.hp < @plant.state.max_hp
+      hp = @plant.hp + 1
+      @plant.update(hp:hp)
+    else
+      puts "That action #{@action_name} didn't work! Try again"
     end
+    ##check to see if plant is ready for evolution, if it is i need to change plant state, and
+    #all plant attributes
     redirect_to @plant
   end
 

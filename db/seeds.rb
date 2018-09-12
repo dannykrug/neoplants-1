@@ -13,7 +13,7 @@ User.destroy_all
 Ailment.destroy_all
 
 PlantType.create(name: "Rose")
-State.create(name: "Seedling", max_hp:2, water_need:2, soil_need:2, plant_type:PlantType.find_by(name: "Rose"))
+State.create(name: "Seedling", max_hp:2, water_need:2, soil_need:2, plant_type:PlantType.find_by(name: "Rose"), img_url:"/app/assets/images/Plant_Gifs/Cactus/Cactus Bae - Seed Plant.gif")
 State.create(name: "Juvenile", max_hp:2, water_need:2, soil_need:2, plant_type:PlantType.find_by(name: "Rose"))
 State.create(name: "Adult", max_hp:2, water_need:2, soil_need:2, plant_type:PlantType.find_by(name: "Rose"))
 
