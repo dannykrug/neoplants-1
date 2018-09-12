@@ -40,6 +40,7 @@ class PlantsController < ApplicationController
   def create
     @plant = Plant.new(plant_params)
     @plant.user = current_user
+    @plant.img_url = @plant.state.img_url
     if @plant.save
       redirect_to @plant
     else
@@ -97,7 +98,8 @@ class PlantsController < ApplicationController
       plant_type = PlantType.find_by(name: "Cactus")
     end
     #create plant
-    @plant = Plant.create(user: current_user, name: params[:plant_name], state: State.find_by(name: "Seedling", plant_type: plant_type))
+    state = State.find_by(name: "Seedling", plant_type: plant_type)
+    @plant = Plant.create(user: current_user, name: params[:plant_name], state: state, img_url: state.img_url)
     #need to bind useractions to that plant
     current_user.add_user_actions
     # @user = User.find(session[:user_id])
@@ -132,6 +134,14 @@ class PlantsController < ApplicationController
     end
     ##check to see if plant is ready for evolution, if it is i need to change plant state, and
     #all plant attributes
+    if @plant.hp == @plant.state.max_hp && @plant.water_points == @plant.state.water_need && @plant.soil_points == @plant.state.soil_need
+      new_state = State.find((@plant.state.next_id))
+      new_wp = new_state.water_need/2
+      new_sp = new_state.soil_need/2
+      new_img_url = new_state.img_url
+      new_hp = new_state.max_hp/2
+      @plant.update(water_points: new_wp, soil_points: new_sp, img_url:new_img_url, hp:new_hp, state:new_state)
+    end
     redirect_to @plant
   end
 

@@ -1,7 +1,7 @@
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 
 
-
-
+<div class="actionsPlace">
 <div class="action_bar">
   <h2>-ACTIONS-</h2>
   <% current_user.actions.each do |action| %>
@@ -14,14 +14,12 @@
   <% end %>
 
 </div>
+</div>
 
+<div class="plantPlace">
 <div class="plant_display">
   <h1>Plant Name: <%= @plant.name %></h1>
-  <% if @plant_type.name == "Cactus" %>
-    <img src="/app/assets/images/Plant_Gifs/Cactus/Cactus Bae.gif">
-  <% elsif @plant_type.name == "Rose" %>
-    <img src="/app/assets/images/Plant_Gifs/Rose/Rose.gif">
-  <% end %>
+  <img src= "<%= @plant.img_url %>">
 </div>
 
 <div class="plant_stats">
@@ -71,7 +69,8 @@
   <% end %>
 
   <br>
+  <%= link_to "Edit Plant's Name", edit_plant_path(@plant) %>
 
 
 </div>
-<%= render "action_bar" %>
+</div>

@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2018_09_11_020100) do
     t.integer "soil_need"
     t.string "img_url"
     t.integer "plant_type_id"
+    t.integer "next_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
