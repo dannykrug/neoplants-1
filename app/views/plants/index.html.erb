@@ -1,10 +1,10 @@
 <h1>Pick a Plant to Interact With!</h1>
 <ul>
   <% @plants.each do |plant| %>
-  <!--  How do I make the plant's image link to -->
-    <li><%= link_to plant.name, plant%></li>
-    <li><%= link_to image_tag('/app/assets/images/Plant_Gifs/Cactus/Cactus Bae.gif') + "Some text", plant%></li>
-
-    <%= button_to "Kill #{plant.name}", plant, method: :delete, data: {confirm: "Are you sure you want to kill #{plant.name}?"} %>
+    <div class="plant_container">
+      <h2><%=link_to plant.name, plant %></h2>
+      <%= link_to image_tag(plant.img_url), plant%>
+      <%= button_to "Kill #{plant.name}", plant, method: :delete, data: {confirm: "Are you sure you want to kill #{plant.name}?"} %>
+  </div>
   <% end %>
 </ul>
