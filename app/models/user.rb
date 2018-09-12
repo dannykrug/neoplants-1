@@ -12,7 +12,7 @@ class User < ApplicationRecord
       UserAction.create(user: self, action: action)
     end
   end
-  # 
+  #
   # def passed_tutorial?=(bool)
   #   self.passed_tutorial?=bool
   # end

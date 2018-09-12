@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root 'application#homepage'
+  post "/plants/:id/actions/:action_id", to: "plants#actions"
   get '/', to: "application#homepage"
   get '/plants/plant_homepage', to: "plants#index"
   get "/plants/seed", to: "plants#seed"
@@ -13,8 +14,8 @@ Rails.application.routes.draw do
   post "/personality_quiz", to: "plants#create_personality"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
-
   delete "/logout", to: "sessions#destroy"
+
 
 
   #post path for personality quiz

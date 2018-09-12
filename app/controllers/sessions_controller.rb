@@ -15,11 +15,11 @@ class SessionsController < ApplicationController
           end
           redirect_to '/plants/plant_homepage'
         else
-          # plant = current_user.plants.first
           redirect_to "/plants/seed"
         end
       else
-        redirect_to '/personality_quiz'
+        redirect_to '/personality_quiz' if !@user.passed_tutorial
+        redirect_to '/plants/new' if @user.passed_tutorial
       end
     else
       redirect_to '/login'
