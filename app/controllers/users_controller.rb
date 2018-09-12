@@ -8,12 +8,13 @@ class UsersController < ApplicationController
     @user.name = params[:user][:first_name] + " " + params[:user][:last_name]
     user_actions = []
     Action.all.each do |action|
-      UserAction.create(user: current_user, action:action)
+      UserAction.create(user: @user, action:action)
     end
     if @user.valid?
       #give user ability to perform all actions
       @user.save
       session[:user_id]= @user.id
+      UserMailer.with(user:@user).welcome_email.deliver_now
       #TO DO: associate user with actions
       redirect_to personality_quiz_path
     else
