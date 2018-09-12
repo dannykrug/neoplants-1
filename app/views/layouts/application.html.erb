@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
@@ -17,10 +18,12 @@
       <%= link_to "Add Plant to Your Collection", new_plant_path %>
     <% end %>
     <%= yield %>
+    <div class="logoutPlace">
     <% if logged_in? %>
       <%= button_to "Logout", logout_path, method: :delete %>
       <% else %>
     <% end %>
+    </div>
     <!-- <%= link_to "Back to Homepage", root_path %> -->
   </body>
 </html>

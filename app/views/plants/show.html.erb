@@ -1,7 +1,7 @@
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 
 
-
-
+<div class="actionsPlace">
 <div class="action_bar">
   <h2>-ACTIONS-</h2>
   <% current_user.actions.each do |action| %>
@@ -14,7 +14,9 @@
   <% end %>
 
 </div>
+</div>
 
+<div class="plantPlace">
 <div class="plant_display">
   <h1>Plant Name: <%= @plant.name %></h1>
   <img src= "<%= @plant.img_url %>">
@@ -71,4 +73,4 @@
 
 
 </div>
-<%= render "action_bar" %>
+</div>
