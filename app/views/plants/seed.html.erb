@@ -1,11 +1,13 @@
+<link rel="stylesheet" href="seed.css">
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
 <h1>Here's a bag of seeds</h1>
-<img src="/app/assets/images/Plant_Gifs/Seeds/Seed Packet .gif"><br>
+<!-- <img src="/app/assets/images/Plant_Gifs/Seeds/Seed Packet .gif"><br> -->
 <img src="/app/assets/images/Plant_Gifs/Seeds/Seed Packet - Open.gif"><br>
 <!--  tag the actions below as action buttons-->
 <p>Why don't you try adding water or soil? </p>
 <div class="action_bar">
   <h2>-Actions-</h2>
-  <!-- <% byebug %> -->
   <%= link_to "Add Water", current_user.plants.first %><br>
   <%= link_to "Add Soil", current_user.plants.first %><br>
 </div>
