@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2018_09_11_020100) do
 
   create_table "plants", force: :cascade do |t|
     t.string "name"
+    t.string "img_url"
     t.integer "water_points", default: 1
     t.integer "soil_points", default: 1
     t.float "hp", default: 1.0
