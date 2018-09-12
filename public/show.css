@@ -1,0 +1,62 @@
+.gutsCenter {
+  display: flex;
+  justify-content: center; align-items: center;
+}
+
+.titleCenter {
+  display: flex;
+  justify-content: center; align-items: center;
+  margin-top: 325px;
+}
+
+.plantsCorner {
+  display: flex;
+  justify-content: flex-end; align-items: flex-end;
+}
+
+.waterReplacement {
+   text-indent: -9999px;
+   width: 250px;
+   height: 95px;
+   background: url(/homepage/images/login_button_web.jpg) #cccccc no-repeat;
+   display: inline-block;
+}
+
+.soilReplacement {
+   text-indent: -9999px;
+   width: 312px;
+   height: 95px;
+   background: url(/homepage/images/sign_up_button_web.jpg) #cccccc no-repeat;
+   display: inline-block;
+}
+
+.sunReplacement {
+   text-indent: -9999px;
+   width: 312px;
+   height: 95px;
+   background: url(/homepage/images/sign_up_button_web.jpg) #cccccc no-repeat;
+   display: inline-block;
+}
+
+.bugzReplacement {
+   text-indent: -9999px;
+   width: 312px;
+   height: 95px;
+   background: url(/homepage/images/sign_up_button_web.jpg) #cccccc no-repeat;
+   display: inline-block;
+}
+
+.sadReplacement {
+   text-indent: -9999px;
+   width: 312px;
+   height: 95px;
+   background: url(/homepage/images/sign_up_button_web.jpg) #cccccc no-repeat;
+   display: inline-block;
+}
+
+body
+{
+    background-color: #228B22;
+    font-family: 'Press Start 2P', cursive;
+    color: #FFB6C1;
+}
