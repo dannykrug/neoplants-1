@@ -17,13 +17,13 @@
 
 .logoutPlace {
   position: absolute;
-  bottom: 59px;
-  right: 0px;
+  bottom: 5px;
+  right: 10px;
 }
 
 .linkPlace {
   position: absolute;
-  bottom: 59px;
+  bottom: 5px;
   left: 10px;
 }
 
@@ -36,6 +36,13 @@
 .gutsCenter {
   display: flex;
   justify-content: center; align-items: center;
+}
+
+.questionsCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .actionsPlace {

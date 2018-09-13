@@ -16,20 +16,17 @@ PlantType.create(name: "Rose")
 
 State.create(name: "Adult", max_hp:6, water_need:6, soil_need:6, plant_type:PlantType.find_by(name: "Rose"), img_url:"/app/assets/images/Plant_Gifs/Rose/Rose.gif")
 State.create(name: "Juvenile", max_hp:4, water_need:4, soil_need:4, plant_type:PlantType.find_by(name: "Rose"), img_url:"/app/assets/images/Plant_Gifs/Rose/Rose - Seedling Grow idle.gif", next_id: State.find_by(name: "Adult", plant_type: PlantType.find_by(name: "Rose")).id)
-State.create(name: "Seedling", max_hp:2, water_need:2, soil_need:2, plant_type:PlantType.find_by(name: "Rose"), img_url:"/app/assets/images/Plant_Gifs/Rose/Rose - Seed Plant.gif", next_id: State.find_by(name: "Juvenile", plant_type:PlantType.find_by(name: "Rose")).id)
+State.create(name: "Seedling", cost:20, max_hp:2, water_need:2, soil_need:2, plant_type:PlantType.find_by(name: "Rose"), img_url:"/app/assets/images/Plant_Gifs/Rose/Rose - Seed Plant.gif", next_id: State.find_by(name: "Juvenile", plant_type:PlantType.find_by(name: "Rose")).id)
 
-<<<<<<< HEAD
-=======
 PlantType.create(name: "Money Tree")
 State.create(name: "Adult", max_hp:6, water_need:6, soil_need:6, plant_type:PlantType.find_by(name: "Money Tree"), img_url:"/app/assets/images/Plant_Gifs/Money Tree/Money Tree.gif")
 State.create(name: "Juvenile", max_hp:4, water_need:4, soil_need:4, plant_type:PlantType.find_by(name: "Money Tree"), img_url:"/app/assets/images/Plant_Gifs/Money Tree/Money Tree - Seedling Grow.gif", next_id: State.find_by(name: "Adult", plant_type: PlantType.find_by(name: "Money Tree")).id)
-State.create(name: "Seedling", max_hp:2, water_need:2, soil_need:2, plant_type:PlantType.find_by(name: "Money Tree"), img_url:"/app/assets/images/Plant_Gifs/Money Tree/Money Tree - Seed Plant.gif", next_id: State.find_by(name: "Juvenile", plant_type:PlantType.find_by(name: "Money Tree")).id)
->>>>>>> joy_branch
+State.create(name: "Seedling", cost:20, max_hp:2, water_need:2, soil_need:2, plant_type:PlantType.find_by(name: "Money Tree"), img_url:"/app/assets/images/Plant_Gifs/Money Tree/Money Tree - Seed Plant.gif", next_id: State.find_by(name: "Juvenile", plant_type:PlantType.find_by(name: "Money Tree")).id)
 
 PlantType.create(name: "Cactus")
 State.create(name: "Adult", max_hp:6, water_need:6, soil_need:6, plant_type:PlantType.find_by(name: "Cactus"), img_url:"/app/assets/images/Plant_Gifs/Cactus/Cactus Bae.gif")
 State.create(name: "Juvenile", max_hp:4, water_need:4, soil_need:4, plant_type:PlantType.find_by(name: "Cactus"),img_url:"/app/assets/images/Plant_Gifs/Cactus/Cactus Bae - Juvenile grow.gif", next_id: State.find_by(name: "Adult", plant_type: PlantType.find_by(name: "Cactus")).id)
-State.create(name: "Seedling", max_hp:2, water_need:2, soil_need:2, plant_type:PlantType.find_by(name: "Cactus"), img_url:"/app/assets/images/Plant_Gifs/Cactus/Cactus Bae - Seed Plant.gif", next_id: State.find_by(name: "Juvenile", plant_type: PlantType.find_by(name: "Cactus")).id)
+State.create(name: "Seedling", cost:20, max_hp:2, water_need:2, soil_need:2, plant_type:PlantType.find_by(name: "Cactus"), img_url:"/app/assets/images/Plant_Gifs/Cactus/Cactus Bae - Seed Plant.gif", next_id: State.find_by(name: "Juvenile", plant_type: PlantType.find_by(name: "Cactus")).id)
 
 Action.create(name:"Add Soil")
 Action.create(name:"Add Water")
