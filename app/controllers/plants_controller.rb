@@ -35,16 +35,24 @@ class PlantsController < ApplicationController
   def new
     @plant = Plant.new
     states = State.all
+    # @states = states.select {|state| state.name == "Seedling" && state.cost <= current_user.balance}
     @states = states.select {|state| state.name == "Seedling"}
+
+    if @states.empty?
+      flash[:warning] = "You can't afford a plant! Go get some $$$!"
+    end
   end
 
   def create
     @plant = Plant.new(plant_params)
     @plant.user = current_user
     @plant.img_url = @plant.state.img_url
-    if @plant.save
+    if current_user.balance >= @plant.state.cost && @plant.save
+      new_balance = current_user.balance - @plant.state.cost
+      current_user.update(balance:new_balance)
       redirect_to @plant
     else
+      flash[:warning] = "You can't afford to buy that plant!"
       redirect_to new_plant_path
     end
   end
@@ -114,27 +122,76 @@ class PlantsController < ApplicationController
     @plant = Plant.find(params[:id])
     @action_name = Action.find(params[:action_id]).name
     @ailment = @plant.ailment
-    #can add else statement flash message pop up "That didn't work try again"
+    @money = current_user.balance
     # byebug
-    if @ailment != nil && @ailment.action.name == @action_name
-      @plant.update(ailment_id:nil)
+
+    #make case statement later
+    #Trivia
+    if @action_name == "Get $$$$"
+      redirect_to "/plants/#{@plant.id}/trivia"
+      return
+    #Soil is 2 dollars, subtract 2 from user
+    elsif @ailment != nil && @ailment.action.name == @action_name
+
+      if @money < 2
+        flash[:warning] = "You don't have enough money"
+      else
+        @money = @money - 2
+        current_user.update(balance:@money)
+        @plant.update(ailment_id:nil)
+      end
+
+    #Soil is 2 dollars, subtract 2 from user
     elsif @action_name == "Add Soil" && @plant.soil_points < @plant.state.soil_need
       #verify that it doesn't max out later
-      soil_points = @plant.soil_points + 1
-      @plant.update(soil_points:soil_points)
+      if @money < 2
+        flash[:warning] = "You don't have enough money"
+      else
+        @money = @money - 2
+        soil_points = @plant.soil_points + 1
+        current_user.update(balance:@money)
+        @plant.update(soil_points:soil_points)
+      end
+    #Water is 1 dollar, subtract 1 from user
     elsif @action_name == "Add Water" && @plant.water_points < @plant.state.water_need
-      water_points = @plant.water_points + 1
-      @plant.update(water_points:water_points)
+      if @money < 1
+        flash[:warning] = "You don't have enough money"
+      else
+        @money = @money - 1
+        water_points = @plant.water_points + 1
+        current_user.update(balance:@money)
+        @plant.update(water_points:water_points)
+      end
     elsif @action_name == "Move to Sunlight" && @ailment != nil && @ailment.action.name == @action_name
       @plant.update(ailment_id:nil)
     elsif @action_name == "Shout" && @ailment != nil && @ailment.action.name == @action_name
       @plant.update(ailment_id:nil)
     #got rid of stroke the leaves
+    #whispering will subtract 1 from user but not tell them
     elsif (@action_name == "Whisper Sweet Nothings") && @ailment != nil && (@ailment.action.name == @action_name || @ailment.action.name)
-      @plant.update(ailment_id:nil)
+      if @money < 1
+        flash[:warning] = "You don't have enough money"
+      else
+        @money = @money - 1
+        @plant.update(ailment_id:nil)
+        current_user.update(balance:@money)
+      end
     elsif (@action_name == "Whisper Sweet Nothings") && @plant.hp < @plant.state.max_hp
-      hp = @plant.hp + 1
-      @plant.update(hp:hp)
+      if @money < 1
+        flash[:warning] = "You don't have enough money"
+      else
+        @money = @money - 1
+        hp = @plant.hp + 1
+        current_user.update(balance:@money)
+        @plant.update(hp:hp)
+      end
+
+      #make balance not go below 0
+      if @money < 0
+        @money = 0
+      end
+      current_user.update(balance:@money)
+     # statement flash message pop up "That didn't work try again"
     else
       flash[:warning] = "#{@action_name} didn't work! Try again"
     end
@@ -151,7 +208,7 @@ class PlantsController < ApplicationController
       new_hp = new_state.max_hp/2
       @plant.update(water_points: new_wp, soil_points: new_sp, img_url:new_img_url, hp:new_hp, state:new_state)
     end
-    redirect_to "/plants/#{@plant.id}/trivia"
+    redirect_to @plant
   end
 
   def trivia
@@ -168,9 +225,9 @@ class PlantsController < ApplicationController
       balance -= 3
 
       #make sure balance doesn't go below 0
-      # if balance < 0
-      #   balance = 0
-      # end
+      if balance < 0
+        balance = 0
+      end
 
       current_user.update(balance:balance)
       if @plant.hp > 1

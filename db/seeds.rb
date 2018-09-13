@@ -28,11 +28,18 @@ State.create(name: "Adult", max_hp:6, water_need:6, soil_need:6, plant_type:Plan
 State.create(name: "Juvenile", max_hp:4, water_need:4, soil_need:4, plant_type:PlantType.find_by(name: "Cactus"),img_url:"/app/assets/images/Plant_Gifs/Cactus/Cactus Bae - Juvenile grow.gif", next_id: State.find_by(name: "Adult", plant_type: PlantType.find_by(name: "Cactus")).id)
 State.create(name: "Seedling", cost:20, max_hp:2, water_need:2, soil_need:2, plant_type:PlantType.find_by(name: "Cactus"), img_url:"/app/assets/images/Plant_Gifs/Cactus/Cactus Bae - Seed Plant.gif", next_id: State.find_by(name: "Juvenile", plant_type: PlantType.find_by(name: "Cactus")).id)
 
+
+PlantType.create(name: "Mystery")
+State.create(name: "Adult", max_hp:6, water_need:6, soil_need:6, plant_type:PlantType.find_by(name: "Mystery"), img_url:"/app/assets/images/Plant_Gifs/Groot/Adult-Groot.gif")
+State.create(name: "Juvenile", max_hp:4, water_need:4, soil_need:4, plant_type:PlantType.find_by(name: "Mystery"),img_url:"/app/assets/images/Plant_Gifs/Groot/Juvinelle-Groot.gif", next_id: State.find_by(name: "Adult", plant_type: PlantType.find_by(name: "Mystery")).id)
+State.create(name: "Seedling", cost:50, max_hp:2, water_need:2, soil_need:2, plant_type:PlantType.find_by(name: "Mystery"), img_url:"/app/assets/images/Plant_Gifs/Groot/Seedling-Groot.png", next_id: State.find_by(name: "Juvenile", plant_type: PlantType.find_by(name: "Mystery")).id)
+
 Action.create(name:"Add Soil")
 Action.create(name:"Add Water")
 Action.create(name:"Move to Sunlight")
 Action.create(name:"Shout")
 Action.create(name:"Whisper Sweet Nothings")
+Action.create(name:"Get $$$$")
 # Action.create(name: "Stroke the Leaves")
 
 Ailment.create(ailment_type:"Bugz", action:Action.find_by(name:"Shout"))

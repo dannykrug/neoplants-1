@@ -24,18 +24,26 @@
     <% if logged_in? %>
        <!-- need to make this not appear on /plants -->
       <!-- <%= link_to "See All Plants", plants_path %> -->
-      <p>Balance: $<%= current_user.balance  %></p>
-      <%= button_to "See All Plants", plants_path, :method =>"get" %><br>
+      <div class=" card">
+        <h1>Info</h1>
+        <p>Water Price: $1</p>
+        <p>Soil Price: $2</p>
+        <p>My Current Balance: $<%= current_user.balance  %></p>
+        <%= button_to "See All Plants", plants_path, :method =>"get" %><br>
+        <%= button_to "Buy New Plant!", new_plant_path, :method =>"get" %><br>
+        <%= button_to "    Logout    ", logout_path, method: :delete %>
+      </div>
+
       <!--  need to make this not appear on /plants/new-->
       <!-- <%= link_to "Add Plant to Your Collection", new_plant_path %> -->
-      <%= button_to "Add Plant to Your Collection", new_plant_path, :method =>"get" %>
+
 
     <% end %>
   </div>
     <%= yield %>
     <div class="logoutPlace">
     <% if logged_in? %>
-      <%= button_to "Logout", logout_path, method: :delete %>
+      <!-- <%= button_to "Logout", logout_path, method: :delete %> -->
       <% else %>
     <% end %>
     </div>
