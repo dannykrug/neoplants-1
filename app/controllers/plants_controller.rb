@@ -113,28 +113,34 @@ class PlantsController < ApplicationController
     @action_name = Action.find(params[:action_id]).name
     @ailment = @plant.ailment
     #can add else statement flash message pop up "That didn't work try again"
-    if @action_name == "Add Soil" && @plant.soil_points < @plant.state.soil_need
+    # byebug
+    if @ailment != nil && @ailment.action.name == @action_name
+      @plant.update(ailment_id:nil)
+    elsif @action_name == "Add Soil" && @plant.soil_points < @plant.state.soil_need
       #verify that it doesn't max out later
       soil_points = @plant.soil_points + 1
       @plant.update(soil_points:soil_points)
     elsif @action_name == "Add Water" && @plant.water_points < @plant.state.water_need
       water_points = @plant.water_points + 1
       @plant.update(water_points:water_points)
-    elsif @action_name == "Move to Sunlight" && @ailment && @ailment.action.name == @action_name
+    elsif @action_name == "Move to Sunlight" && @ailment != nil && @ailment.action.name == @action_name
       @plant.update(ailment_id:nil)
-    elsif @action_name == "Shout" && @ailment && @ailment.action.name == @action_name
+    elsif @action_name == "Shout" && @ailment != nil && @ailment.action.name == @action_name
       @plant.update(ailment_id:nil)
-    elsif @action_name == "Whisper Sweet Nothings & Stroke the Leaves" && @ailment && @ailment.action.name == @action_name
+    #got rid of stroke the leaves
+    elsif (@action_name == "Whisper Sweet Nothings") && @ailment != nil && (@ailment.action.name == @action_name || @ailment.action.name)
       @plant.update(ailment_id:nil)
-    elsif @action_name == "Whisper Sweet Nothings & Stroke the Leaves" && @plant.hp < @plant.state.max_hp
+    elsif (@action_name == "Whisper Sweet Nothings") && @plant.hp < @plant.state.max_hp
       hp = @plant.hp + 1
       @plant.update(hp:hp)
     else
       puts "That action #{@action_name} didn't work! Try again"
+      flash[:warning] = "#{@action_name} didn't work! Try again"
     end
     ##check to see if plant is ready for evolution, if it is i need to change plant state, and
     #all plant attributes
-    if @plant.hp == @plant.state.max_hp && @plant.water_points == @plant.state.water_need && @plant.soil_points == @plant.state.soil_need
+
+    if @plant.hp == @plant.state.max_hp && @plant.state.next_id != nil && @plant.water_points == @plant.state.water_need && @plant.soil_points == @plant.state.soil_need
       new_state = State.find((@plant.state.next_id))
       new_wp = new_state.water_need/2
       new_sp = new_state.soil_need/2

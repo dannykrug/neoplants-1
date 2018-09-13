@@ -1,6 +1,13 @@
 <link rel="stylesheet" href="personality_test.css">
 <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 
+
+<% if flash[:notice] %>
+  <div class="alert alert-success" role = "alert">
+    <%=flash[:notice]%>
+  </div>
+<% end %>
+
 <div class="titleCenter">
 <h2>Answer these questions</h2>
 </div>
@@ -12,7 +19,7 @@
 <div class="gutsCenter">
 <%= form_tag "/personality_quiz", method: "post" do %>
 
-  <div class="question">
+  <div class="question form-group">
     <%= label_tag "Question 1: Scones or Muffins?" %><br>
     <%= radio_button_tag(:"answers[q1]", "scones", value:"M") %>
     <%= label_tag(:q1_m, "scones") %>
@@ -20,7 +27,7 @@
     <%= label_tag(:q1_f, "muffins") %><br>
   </div><br>
 
-  <div class="question">
+  <div class="question form-group">
     <%= label_tag "Question 2: Kanye West or Drake?" %><br>
     <%= radio_button_tag(:"answers[q2]", "kanye west") %>
     <%= label_tag(:q2_m, "kanye west") %>
@@ -28,7 +35,7 @@
     <%= label_tag(:q2_f, "drake") %><br>
   </div><br>
 
-  <div class="question">
+  <div class="question form-group">
     <%= label_tag "Question 3: Whiskey or Vodka?" %><br>
     <%= radio_button_tag(:"answers[q3]", "whiskey") %>
     <%= label_tag(:q3_m, "whiskey") %>
@@ -36,7 +43,7 @@
     <%= label_tag(:q3_f, "vodka") %><br>
   </div><br>
 
-  <div class="question">
+  <div class="question form-group">
     <%= label_tag "Question 4: Bushwick or Williamsburg?" %><br>
     <%= radio_button_tag(:"answers[q4]", "bushwick") %>
     <%= label_tag(:q4_m, "bushwick") %>
@@ -44,7 +51,7 @@
     <%= label_tag(:q4_f, "williamsburg") %><br>
   </div><br>
 
-  <div class="question">
+  <div class="question form-group">
     <%= label_tag "Question 5: Pugs or Poodles?" %><br>
     <%= radio_button_tag(:"answers[q5]", "pugs") %>
     <%= label_tag(:q5_m, "pugs") %>
@@ -52,7 +59,7 @@
     <%= label_tag(:q5_f, "poodles") %><br>
   </div><br>
 
-  <div class="question">
+  <div class="question form-group">
     <%= label_tag "Question 6: Soup or Salad?" %><br>
     <%= radio_button_tag(:"answers[q6]", "soup") %>
     <%= label_tag(:q6_m, "soup") %>
@@ -60,7 +67,7 @@
     <%= label_tag(:q6_f, "salad") %><br>
   </div><br>
 
-  <div class="question">
+  <div class="question form-group">
     <%= label_tag "Question 7: Team Jacob or Team Edward?" %><br>
     <%= radio_button_tag(:"answers[q7]", "team jacob") %>
     <%= label_tag(:q7_m, "team jacob") %>
@@ -68,7 +75,7 @@
     <%= label_tag(:q7_f, "team edward") %><br>
   </div><br>
 
-  <div class="question">
+  <div class="question form-group">
     <%= label_tag "Question 8: Chinese Food or Thai Food?" %><br>
     <%= radio_button_tag(:"answers[q8]", "chinese food") %>
     <%= label_tag(:q8_m, "chinese food") %>
@@ -76,7 +83,7 @@
     <%= label_tag(:q8_f, "thai food") %><br>
   </div><br>
 
-  <div class="question">
+  <div class="question form-group">
     <%= label_tag "Question 9: Shampoo or Conditioner?" %><br>
     <%= radio_button_tag(:"answers[q9]", "shampoo") %>
     <%= label_tag(:q9_m, "shampoo") %>
@@ -84,7 +91,7 @@
     <%= label_tag(:q9_f, "conditioner") %><br>
   </div><br>
 
-  <div class="question">
+  <div class="question form-group">
     <%= label_tag "What would you like to name your plant?" %><br>
     <%= text_field_tag :plant_name %>
   </div><br>

@@ -18,6 +18,13 @@ State.create(name: "Adult", max_hp:6, water_need:6, soil_need:6, plant_type:Plan
 State.create(name: "Juvenile", max_hp:4, water_need:4, soil_need:4, plant_type:PlantType.find_by(name: "Rose"), img_url:"/app/assets/images/Plant_Gifs/Rose/Rose - Seedling Grow idle.gif", next_id: State.find_by(name: "Adult", plant_type: PlantType.find_by(name: "Rose")).id)
 State.create(name: "Seedling", max_hp:2, water_need:2, soil_need:2, plant_type:PlantType.find_by(name: "Rose"), img_url:"/app/assets/images/Plant_Gifs/Rose/Rose - Seed Plant.gif", next_id: State.find_by(name: "Juvenile", plant_type:PlantType.find_by(name: "Rose")).id)
 
+<<<<<<< HEAD
+=======
+PlantType.create(name: "Money Tree")
+State.create(name: "Adult", max_hp:6, water_need:6, soil_need:6, plant_type:PlantType.find_by(name: "Money Tree"), img_url:"/app/assets/images/Plant_Gifs/Money Tree/Money Tree.gif")
+State.create(name: "Juvenile", max_hp:4, water_need:4, soil_need:4, plant_type:PlantType.find_by(name: "Money Tree"), img_url:"/app/assets/images/Plant_Gifs/Money Tree/Money Tree - Seedling Grow.gif", next_id: State.find_by(name: "Adult", plant_type: PlantType.find_by(name: "Money Tree")).id)
+State.create(name: "Seedling", max_hp:2, water_need:2, soil_need:2, plant_type:PlantType.find_by(name: "Money Tree"), img_url:"/app/assets/images/Plant_Gifs/Money Tree/Money Tree - Seed Plant.gif", next_id: State.find_by(name: "Juvenile", plant_type:PlantType.find_by(name: "Money Tree")).id)
+>>>>>>> joy_branch
 
 PlantType.create(name: "Cactus")
 State.create(name: "Adult", max_hp:6, water_need:6, soil_need:6, plant_type:PlantType.find_by(name: "Cactus"), img_url:"/app/assets/images/Plant_Gifs/Cactus/Cactus Bae.gif")
@@ -28,9 +35,11 @@ Action.create(name:"Add Soil")
 Action.create(name:"Add Water")
 Action.create(name:"Move to Sunlight")
 Action.create(name:"Shout")
-Action.create(name:"Whisper Sweet Nothings & Stroke the Leaves")
+Action.create(name:"Whisper Sweet Nothings")
+# Action.create(name: "Stroke the Leaves")
 
 Ailment.create(ailment_type:"Bugz", action:Action.find_by(name:"Shout"))
 Ailment.create(ailment_type:"Too Much Shade", action:Action.find_by(name:"Move to Sunlight"))
 Ailment.create(ailment_type:"Knocked Over", action:Action.find_by(name:"Add Soil"))
-Ailment.create(ailment_type:"Sad", action:Action.find_by(name:"Whisper Sweet Nothings & Stroke the Leaves"))
+Ailment.create(ailment_type:"Sad", action:Action.find_by(name:"Whisper Sweet Nothings"))
+# Ailment.create(ailment_type:"Sad", action:Action.find_by(name:"Stroke the Leaves"))
