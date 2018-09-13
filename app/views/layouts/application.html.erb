@@ -7,15 +7,18 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
+
   </head>
 
   <body>
     <% if logged_in? %>
        <!-- need to make this not appear on /plants -->
-      <%= link_to "See All Plants", plants_path %>
+      <!-- <%= link_to "See All Plants", plants_path %> -->
+      <%= button_to "See All Plants", plants_path, :method =>"get" %>
       <!--  need to make this not appear on /plants/new-->
-      <%= link_to "Add Plant to Your Collection", new_plant_path %>
+      <!-- <%= link_to "Add Plant to Your Collection", new_plant_path %> -->
+      <%= button_to "Add Plant to Your Collection", new_plant_path, :method =>"get" %>
+
     <% end %>
     <%= yield %>
     <div class="logoutPlace">

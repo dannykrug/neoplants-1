@@ -9,8 +9,24 @@ class SessionsController < ApplicationController
       if !@user.plants.empty?
         if @user.passed_tutorial
           @user.plants.each do |plant|
-            if plant.hp >= 1
-              plant.hp -= 1
+            if plant.hp > 1
+              hp = plant.hp - 1
+              #10% chance of catching an ailment
+              # if 1 + rand(10) == 5
+              #for testing purposes
+              if 5 == 5
+                ailment = Ailment.all.sample
+                if ailment.ailment_type == "Knocked Over"
+                  sp = plant.soil_points - 1
+                  plant.update(soil_points:sp)
+                end
+                plant.update(ailment:ailment)
+              end
+              plant.update(hp:hp)
+            elsif plant.hp == 1
+              plant.destroy
+              redirect_to '/plants/death'
+              return
             end
           end
           redirect_to '/plants/plant_homepage'

@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     if @user.valid?
       #give user ability to perform all actions
       @user.save
+      flash[:notice] = "Successfully Signed Up for Neoplants"
       session[:user_id]= @user.id
       # UserMailer.with(user:@user).welcome_email.deliver_now
       #TO DO: associate user with actions
