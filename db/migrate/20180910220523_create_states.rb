@@ -7,6 +7,7 @@ class CreateStates < ActiveRecord::Migration[5.2]
       t.integer :soil_need
       t.string :img_url
       t.integer :plant_type_id
+      t.integer :next_id
 
       t.timestamps
     end

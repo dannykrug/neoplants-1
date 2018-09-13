@@ -18,13 +18,8 @@
 
 <div class="plantPlace">
 <div class="plant_display">
-  <h2>Plant Name:<br>
-    <%= @plant.name %></h2>
-  <% if @plant_type.name == "Cactus" %>
-    <img src="/app/assets/images/Plant_Gifs/Cactus/Cactus Bae.gif">
-  <% elsif @plant_type.name == "Rose" %>
-    <img src="/app/assets/images/Plant_Gifs/Rose/Rose.gif">
-  <% end %>
+  <h1><%= @plant.name %></h1>
+  <img src= "<%= @plant.img_url %>">
 </div>
 
 <div class="plant_stats">
@@ -74,6 +69,7 @@
   <% end %>
 
   <br>
+  <%= link_to "Edit Plant's Name", edit_plant_path(@plant) %>
 
 
 </div>
