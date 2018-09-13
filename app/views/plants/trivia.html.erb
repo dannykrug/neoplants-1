@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="personality_test.css">
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
+
+<% if flash[:notice] %>
+  <div class="alert alert-success" role = "alert">
+    <%=flash[:notice]%>
+  </div>
+<% end %>
+
+
+<div class="titleCenter">
+<h2>Answer this Question Right to get $5</h2>
+</div>
+
+<div class="title2center">
+  <h3>Difficulty Level: <%=@question["difficulty"].capitalize %></h3>
+</div>
+
+<div class="gutsCenter">
+<%= form_tag "/plants/#{@plant.id}/trivia", method: "post" do %>
+
+
+  <div class="question form-group">
+
+    <%= label_tag @question["question"] %><br>
+    <!-- change logic to randomize order of answers later -->
+    <% @question["incorrect_answers"].each do |incorrect_answer| %>
+      <%= radio_button_tag(:"answers", "i#{incorrect_answer}", value: "#{incorrect_answer}") %>
+      <%= label_tag(:q1_m, "#{incorrect_answer}") %>
+    <% end %>
+    <%= radio_button_tag(:"answers", "c#{@question["correct_answer"]}", value: "#{@question["correct_answer"]}") %>
+    <%= label_tag(:q1_m, @question["correct_answer"]) %>
+  </div><br>
+
+
+
+  <%= submit_tag "Submit Answers" %>
+
+<% end %>
+  </div>
