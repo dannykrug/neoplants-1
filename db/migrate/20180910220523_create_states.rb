@@ -8,6 +8,7 @@ class CreateStates < ActiveRecord::Migration[5.2]
       t.string :img_url
       t.integer :plant_type_id
       t.integer :next_id
+      t.integer :cost
 
       t.timestamps
     end

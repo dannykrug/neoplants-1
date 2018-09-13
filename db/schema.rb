@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2018_09_11_020100) do
     t.string "img_url"
     t.integer "plant_type_id"
     t.integer "next_id"
+    t.integer "cost"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -71,6 +72,7 @@ ActiveRecord::Schema.define(version: 2018_09_11_020100) do
     t.string "last_name"
     t.string "email"
     t.string "password_digest"
+    t.integer "balance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "passed_tutorial", default: false

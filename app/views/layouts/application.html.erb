@@ -8,18 +8,28 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <style>
+      a { color: #FFFFF0; } /* CSS link color */
+    </style>
+
+    <audio src="/app/assets/images/earthbound_2.mp3" autoplay loop>
+      <p>Your browser does not support HTML5 audio playback</p>
+    </audio>
+
   </head>
 
   <body>
+    <div class="linkPlace">
     <% if logged_in? %>
        <!-- need to make this not appear on /plants -->
       <!-- <%= link_to "See All Plants", plants_path %> -->
-      <%= button_to "See All Plants", plants_path, :method =>"get" %>
+      <%= button_to "See All Plants", plants_path, :method =>"get" %><br>
       <!--  need to make this not appear on /plants/new-->
       <!-- <%= link_to "Add Plant to Your Collection", new_plant_path %> -->
       <%= button_to "Add Plant to Your Collection", new_plant_path, :method =>"get" %>
 
     <% end %>
+  </div>
     <%= yield %>
     <div class="logoutPlace">
     <% if logged_in? %>
