@@ -12,9 +12,10 @@
       a { color: #FFFFF0; } /* CSS link color */
     </style>
 
-    <audio src="/app/assets/images/earthbound_2.mp3" autoplay loop>
+<!-- Disabled music for now -->
+    <!-- <audio src="/app/assets/images/earthbound_2.mp3" autoplay loop>
       <p>Your browser does not support HTML5 audio playback</p>
-    </audio>
+    </audio> -->
 
   </head>
 
@@ -23,6 +24,7 @@
     <% if logged_in? %>
        <!-- need to make this not appear on /plants -->
       <!-- <%= link_to "See All Plants", plants_path %> -->
+      <p>Balance: $<%= current_user.balance  %></p>
       <%= button_to "See All Plants", plants_path, :method =>"get" %><br>
       <!--  need to make this not appear on /plants/new-->
       <!-- <%= link_to "Add Plant to Your Collection", new_plant_path %> -->

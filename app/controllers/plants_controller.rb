@@ -163,11 +163,31 @@ class PlantsController < ApplicationController
     # byebug
     @plant = Plant.find(params[:id])
     if params["answers"][0] == "i"
-      #sample asset - 1 or heart?
+      #minus one heart when incorrect and minus $3
+      balance = current_user.balance
+      balance -= 3
 
+      #make sure balance doesn't go below 0
+      # if balance < 0
+      #   balance = 0
+      # end
+
+      current_user.update(balance:balance)
+      if @plant.hp > 1
+        hp = @plant.hp - 1
+        @plant.update(hp:hp)
+      elsif @plant.hp == 1
+        @plant.destroy
+        redirect_to '/plants/death'
+        return
+      end
       flash[:warning] = "#{params["answers"][1, params["answers"].length-1]} is the wrong answer! Try again"
+
     elsif params["answers"][0] == "c"
       #user balance + 5
+      balance = current_user.balance
+      balance += 5
+      current_user.update(balance:balance)
       if @plant.hp < @plant.state.max_hp
         hp = @plant.hp + 1
         @plant.update(hp:hp)
