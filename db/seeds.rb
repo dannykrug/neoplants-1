@@ -13,7 +13,6 @@ User.destroy_all
 Ailment.destroy_all
 
 PlantType.create(name: "Rose")
-
 State.create(name: "Adult", max_hp:6, water_need:6, soil_need:6, plant_type:PlantType.find_by(name: "Rose"), img_url:"/app/assets/images/Plant_Gifs/Rose/Rose.gif")
 State.create(name: "Juvenile", max_hp:4, water_need:4, soil_need:4, plant_type:PlantType.find_by(name: "Rose"), img_url:"/app/assets/images/Plant_Gifs/Rose/Rose - Seedling Grow idle.gif", next_id: State.find_by(name: "Adult", plant_type: PlantType.find_by(name: "Rose")).id)
 State.create(name: "Seedling", cost:20, max_hp:2, water_need:2, soil_need:2, plant_type:PlantType.find_by(name: "Rose"), img_url:"/app/assets/images/Plant_Gifs/Rose/Rose - Seed Plant.gif", next_id: State.find_by(name: "Juvenile", plant_type:PlantType.find_by(name: "Rose")).id)
@@ -33,6 +32,25 @@ PlantType.create(name: "Mystery")
 State.create(name: "Adult", max_hp:6, water_need:6, soil_need:6, plant_type:PlantType.find_by(name: "Mystery"), img_url:"/app/assets/images/Plant_Gifs/Groot/Adult-Groot.gif")
 State.create(name: "Juvenile", max_hp:4, water_need:4, soil_need:4, plant_type:PlantType.find_by(name: "Mystery"),img_url:"/app/assets/images/Plant_Gifs/Groot/Juvinelle-Groot.gif", next_id: State.find_by(name: "Adult", plant_type: PlantType.find_by(name: "Mystery")).id)
 State.create(name: "Seedling", cost:50, max_hp:2, water_need:2, soil_need:2, plant_type:PlantType.find_by(name: "Mystery"), img_url:"/app/assets/images/Plant_Gifs/Groot/Seedling-Groot.png", next_id: State.find_by(name: "Juvenile", plant_type: PlantType.find_by(name: "Mystery")).id)
+
+PlantType.create(name: "Fire Pokemon")
+State.create(name: "Adult", max_hp:6, water_need:6, soil_need:6, plant_type:PlantType.find_by(name: "Fire Pokemon"), img_url:"/app/assets/images/Plant_Gifs/Charmander/charzard.gif")
+State.create(name: "Juvenile", max_hp:4, water_need:4, soil_need:4, plant_type:PlantType.find_by(name: "Fire Pokemon"),img_url:"/app/assets/images/Plant_Gifs/Charmander/charmeleon.gif", next_id: State.find_by(name: "Adult", plant_type: PlantType.find_by(name: "Fire Pokemon")).id)
+State.create(name: "Seedling", cost:10, max_hp:2, water_need:2, soil_need:2, plant_type:PlantType.find_by(name: "Fire Pokemon"), img_url:"/app/assets/images/Plant_Gifs/Charmander/charmander.gif", next_id: State.find_by(name: "Juvenile", plant_type: PlantType.find_by(name: "Fire Pokemon")).id)
+
+PlantType.create(name: "Pirahna Plant")
+# State.create(name: "Adult", max_hp:6, water_need:6, soil_need:6, plant_type:PlantType.find_by(name: "Pirahna Plant"), img_url:"/app/assets/images/Plant_Gifs/Pirahna Plant/Pirahna Plant.gif")
+# State.create(name: "Juvenile", max_hp:4, water_need:4, soil_need:4, plant_type:PlantType.find_by(name: "Pirahna Plant"), img_url:"/app/assets/images/Plant_Gifs/Pirahna Plant/Pirahna Plant - Seedling Grow idle.gif", next_id: State.find_by(name: "Adult", plant_type: PlantType.find_by(name: "Pirahna Plant")).id)
+State.create(name: "Juvenile", max_hp:4, water_need:4, soil_need:4, plant_type:PlantType.find_by(name: "Pirahna Plant"), img_url:"/app/assets/images/Plant_Gifs/PirahnaPlant/pirahna-plant.gif")
+State.create(name: "Seedling", cost:10, max_hp:2, water_need:2, soil_need:2, plant_type:PlantType.find_by(name: "Pirahna Plant"), img_url:"/app/assets/images/Plant_Gifs/PirahnaPlant/flower-plant-pipe.jpg", next_id: State.find_by(name: "Juvenile", plant_type:PlantType.find_by(name: "Pirahna Plant")).id)
+
+PlantType.create(name: "Tree Man")
+State.create(name: "Adult", max_hp:6, water_need:6, soil_need:6, plant_type:PlantType.find_by(name: "Tree Man"), img_url:"/app/assets/images/Plant_Gifs/TreeMan/tree-man.gif")
+State.create(name: "Juvenile", max_hp:4, water_need:4, soil_need:4, plant_type:PlantType.find_by(name: "Tree Man"), img_url:"/app/assets/images/Plant_Gifs/Rose/Rose - Seedling Grow.gif", next_id: State.find_by(name: "Adult", plant_type: PlantType.find_by(name: "Tree Man")).id)
+State.create(name: "Seedling", cost:5, max_hp:2, water_need:2, soil_need:2, plant_type:PlantType.find_by(name: "Tree Man"), img_url:"/app/assets/images/Plant_Gifs/Rose/Rose - Seed Plant.gif", next_id: State.find_by(name: "Juvenile", plant_type:PlantType.find_by(name: "Tree Man")).id)
+
+PlantType.create(name: "Succulent")
+State.create(name: "Seedling", cost:1, max_hp:4, water_need:4, soil_need:4, plant_type:PlantType.find_by(name: "Succulent"), img_url:"/app/assets/images/Plant_Gifs/Succulent/succulent.gif")
 
 Action.create(name:"Add Soil")
 Action.create(name:"Add Water")

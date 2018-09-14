@@ -1,13 +1,27 @@
+<head>
+  <style >
+    body {
+      background: url(/homepage/images/daytime-background.png);
+      background-size: cover;
+      background-position: center;
+      /* background-repeat: no-repeat; */
+    }
+  </style>
+</head>
+
 <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 <% if flash[:warning] %>
   <div class="alert alert-warning" role = "alert">
     <%=flash[:warning]%>
   </div>
 <% end %>
+<h1>Grow Your Plant</h1>
+<div class="instruction_bar">
 
-<h1>Grow Your Plant & Fill Up Plant Stats</h1>
-<p>Instructions: Get Money to Take Care of Your Plant & Buy More Plants</p>
-<p>Evolve Your Plant By Filling Up Their Stats</p>
+  <p>Instructions: </p>
+  <p> a) Use Actions to Fill Up Plant Stats to Grow Your Plant!</p>
+  <p> b) Use Get $$$$ Button to Earn Money for Soil, Water, and More Plants</p>
+</div>
 <div class="actionsPlace">
 <div class="action_bar col-sm-3">
   <h2>ACTIONS</h2>
