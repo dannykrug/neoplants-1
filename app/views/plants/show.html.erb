@@ -1,9 +1,30 @@
+<head>
+  <style >
+    body {
+      background: url(/homepage/images/daytime-background.png);
+      background-size: cover;
+      background-position: center;
+      /* background-repeat: no-repeat; */
+    }
+  </style>
+</head>
+
 <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+<% if flash[:warning] %>
+  <div class="alert alert-warning" role = "alert">
+    <%=flash[:warning]%>
+  </div>
+<% end %>
+<h1>Grow Your Plant</h1>
+<div class="instruction_bar">
 
+  <p>Instructions: </p>
+  <p> a) Use Actions to Fill Up Plant Stats to Grow Your Plant!</p>
+  <p> b) Use Get $$$$ Button to Earn Money for Soil, Water, and More Plants</p>
+</div>
+<div class="card">
 
-<div class="actionsPlace">
-<div class="action_bar">
-  <h2>-ACTIONS-</h2>
+  <h2>ACTIONS</h2>
   <% current_user.actions.each do |action| %>
 
 
@@ -12,13 +33,13 @@
 
 
   <% end %>
+    <%= button_to "Kill #{@plant.name}", @plant, method: :delete, data: {confirm: "Are you sure you want to kill #{@plant.name}?"} %>
 
-</div>
 </div>
 
 <div class="plantPlace">
 <div class="plant_display">
-  <h1>Plant Name: <%= @plant.name %></h1>
+  <h1><%= @plant.name %></h1>
   <img src= "<%= @plant.img_url %>">
 </div>
 
@@ -69,7 +90,7 @@
   <% end %>
 
   <br>
-  <%= link_to "Edit Plant's Name", edit_plant_path(@plant) %>
+  <%= button_to "Edit Plant's Name", edit_plant_path(@plant), method: :get %>
 
 
 </div>

@@ -17,8 +17,14 @@
 
 .logoutPlace {
   position: absolute;
-  bottom: 59px;
-  right: 0;
+  bottom: 5px;
+  right: 10px;
+}
+
+.linkPlace {
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
 }
 
 .titleCenter {
@@ -30,6 +36,13 @@
 .gutsCenter {
   display: flex;
   justify-content: center; align-items: center;
+}
+
+.questionsCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .actionsPlace {
@@ -46,9 +59,27 @@
   float: right;
 }
 
-body
-{
+.button_to{
+  display: inline-block;
+}
+
+
+body{
     background-color: #228B22;
     font-family: 'Press Start 2P', cursive;
     color: #FFB6C1;
+}
+
+.info_bar{
+  padding:10px;
+  margin:10px;
+  position:static;
+}
+
+.instruction_bar{
+  background-color: #709e58;
+  padding:10px;
+  border: 2px solid #FFF;
+  display: inline-block;
+  width: 100%;
 }

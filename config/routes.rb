@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get "/plants/death", to: "plants#death"
   get "/plants", to: "plants#index"
   resources :plants
+  get '/plants/:id/trivia', to: "plants#trivia"
+  post '/plants/:id/trivia', to: "plants#process_question"
   get "/signup", to: "users#new"
   post "/users", to: "users#create"
   get "/personality_quiz", to: "plants#personality"
@@ -15,6 +17,7 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+
 
 
 

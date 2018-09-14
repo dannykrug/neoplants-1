@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="flowershop.css">
 <head>
   <style>
     a { color: #FFFFF0; } /* CSS link color */
@@ -6,14 +7,23 @@
 </head>
 
 <body>
-<h1>Pick a Plant to Interact With!</h1>
-<ul>
+<h1 class = "banner">Pick a Plant to Interact With!</h1>
+
+
+<div class="cards">
   <% @plants.each do |plant| %>
-    <div class="plant_container">
-      <h2><%=link_to plant.name, plant %></h2>
-      <%= link_to image_tag(plant.img_url), plant%>
-      <%= button_to "Kill #{plant.name}", plant, method: :delete, data: {confirm: "Are you sure you want to kill #{plant.name}?"} %>
-  </div>
+
+  <div class="card">
+    <%= link_to image_tag(plant.img_url), plant, class:"card"%>
+    <!-- <div class="container"> -->
+        <%=link_to plant.name, plant, class:"card" %><br>
+        <%= button_to "Kill #{plant.name}", plant, method: :delete, data: {confirm: "Are you sure you want to kill #{plant.name}?"},class:"card" %>
+    </div>
+  <!-- </div> -->
   <% end %>
-</ul>
+
+
+</div>
+
+
 </body>

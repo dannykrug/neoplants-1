@@ -10,9 +10,11 @@ class UsersController < ApplicationController
     Action.all.each do |action|
       UserAction.create(user: @user, action:action)
     end
+    @user.balance = 10
     if @user.valid?
       #give user ability to perform all actions
       @user.save
+      flash[:notice] = "Successfully Signed Up for Neoplants"
       session[:user_id]= @user.id
       # UserMailer.with(user:@user).welcome_email.deliver_now
       #TO DO: associate user with actions

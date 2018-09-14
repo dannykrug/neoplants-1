@@ -1,10 +1,36 @@
-<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 
- <h1>Add A Plant to Your Collection!</h1>
- <%= form_for @plant do |f| %>
-   <%= f.label :state_id, "Plant Type" %>
-   <%= f.collection_select :state_id, @states, :id, :plant_type_name%><br>
-   <%= f.label :name, "Name Your Plant!" %>
-   <%= f.text_field :name %><br>
-   <%= f.submit %>
- <% end %>
+<head>
+  <link rel="stylesheet" href="flowershop.css">
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <style >
+      body {
+        background: url(/homepage/images/dawn-background.png);
+        background-size: cover;
+        /* background-position: center; */
+        background-repeat: no-repeat;
+      }
+    </style>
+</head>
+
+<body>
+  <% if flash[:warning] %>
+    <div class="alert alert-warning" role = "alert">
+      <%=flash[:warning]%>
+    </div>
+  <% end %>
+
+   <h1>Add A Plant to Your Collection!</h1>
+   <%= form_for @plant do |f| %>
+     <%= f.label :state_id, "Plant Type" %>
+     <%= f.collection_select :state_id, @states, :id, :plant_type_name%><br>
+     <%= f.label :name, "Name Your Plant!" %>
+     <%= f.text_field :name %><br>
+     <%= f.submit %>
+   <% end %>
+
+   <!-- <div class="plants-container">
+     <% @states.each do |state| %>
+      <%=  %>
+     <% end %>
+   </div> -->
+</body>

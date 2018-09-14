@@ -1,5 +1,12 @@
 <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-
+<style >
+  body {
+    background: url(/homepage/images/dawn-background.png);
+    background-size: cover;
+    /* background-position: center; */
+    background-repeat: no-repeat;
+  }
+</style>
 <h1>Rename <%= @plant.name %> !</h1>
 <%= form_for @plant do |f| %>
   <%= f.label :name, "Name Your Plant!" %>
