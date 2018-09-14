@@ -2,6 +2,8 @@
 
 For our project in Module 2 at Flatiron School, we created a Plant Game Hybrid of Neopets and Tamagochi using Ruby on Rails. The main objective of the game is to buy all the plants and earn the money to buy and raise up your plants by answering science questions. If you get too many wrong though, your plant's health depreciates. Find out if you can take care of a plant IRL in this completely unrelated game where you take care of a virtual plant!
 
+![](public/app/assets/images/Plant_Gifs/Cactus/Cactus Bae.gif)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
