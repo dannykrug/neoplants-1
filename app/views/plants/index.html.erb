@@ -10,7 +10,7 @@
 <h1 class = "banner">Pick a Plant to Interact With!</h1>
 
 
-
+<div class="cards">
   <% @plants.each do |plant| %>
 
   <div class="card">
@@ -20,8 +20,10 @@
         <%= button_to "Kill #{plant.name}", plant, method: :delete, data: {confirm: "Are you sure you want to kill #{plant.name}?"},class:"card" %>
     </div>
   <!-- </div> -->
-
-
-
   <% end %>
+
+
+</div>
+
+
 </body>

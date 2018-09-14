@@ -22,8 +22,8 @@
   <p> a) Use Actions to Fill Up Plant Stats to Grow Your Plant!</p>
   <p> b) Use Get $$$$ Button to Earn Money for Soil, Water, and More Plants</p>
 </div>
-<div class="actionsPlace">
-<div class="action_bar col-sm-3">
+<div class="card">
+
   <h2>ACTIONS</h2>
   <% current_user.actions.each do |action| %>
 
@@ -33,8 +33,8 @@
 
 
   <% end %>
+    <%= button_to "Kill #{@plant.name}", @plant, method: :delete, data: {confirm: "Are you sure you want to kill #{@plant.name}?"} %>
 
-</div>
 </div>
 
 <div class="plantPlace">
