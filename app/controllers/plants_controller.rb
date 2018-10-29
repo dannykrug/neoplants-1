@@ -9,6 +9,7 @@ class PlantsController < ApplicationController
 
   def show
     current_user.update(passed_tutorial:true)
+    #Get stats of plant to display later
     @plant = Plant.find(params[:id])
     @plant_type = @plant.state.plant_type
     @state = @plant.state
@@ -29,14 +30,13 @@ class PlantsController < ApplicationController
 
   def index
     @plants = current_user.plants
-    # render :plant_homepage
   end
 
   def new
     @plant = Plant.new
     states = State.all
-    # @states = states.select {|state| state.name == "Seedling" && state.cost <= current_user.balance}
-    @states = states.select {|state| state.name == "Seedling"}
+    @states = states.select {|state| state.name == "Seedling" && state.cost <= current_user.balance}
+    # @states = states.select {|state| state.name == "Seedling"}
 
     if @states.empty?
       flash[:warning] = "You can't afford a plant! Go get some $$$!"
@@ -44,17 +44,23 @@ class PlantsController < ApplicationController
   end
 
   def create
+    #declare variables
     @plant = Plant.new(plant_params)
     @plant.user = current_user
     @plant.img_url = @plant.state.img_url
+
+    #check to make sure that the user can afford this plant
+    #if they can deduct from their balance and go to show page
     if current_user.balance >= @plant.state.cost && @plant.save
       new_balance = current_user.balance - @plant.state.cost
       current_user.update(balance:new_balance)
       redirect_to @plant
+    #If they can't warn them that they can't afford it
     else
       flash[:warning] = "You can't afford to buy that plant!"
       redirect_to new_plant_path
     end
+
   end
 
   def edit
@@ -63,6 +69,7 @@ class PlantsController < ApplicationController
 
   def update
     @plant = Plant.find(params[:id])
+    #can only update a plant's name for now
     if @plant.update(plant_params)
       redirect_to @plant
     else
@@ -71,6 +78,7 @@ class PlantsController < ApplicationController
   end
 
   def destroy
+    #delete plant, go to death page
     @plant = Plant.find(params[:id])
     @name = @plant.name
     @plant.destroy
@@ -90,7 +98,6 @@ class PlantsController < ApplicationController
   def create_personality
     #based on information given by personality personality_quiz
     #assign person to certain plant
-    # byebug
     masc = 0
     fem = 0
     answers = params[:answers]
@@ -123,7 +130,6 @@ class PlantsController < ApplicationController
     @action_name = Action.find(params[:action_id]).name
     @ailment = @plant.ailment
     @money = current_user.balance
-    # byebug
 
     #make case statement later
     #Trivia
@@ -168,7 +174,7 @@ class PlantsController < ApplicationController
       @plant.update(ailment_id:nil)
     #got rid of stroke the leaves
     #whispering will subtract 1 from user but not tell them
-    elsif (@action_name == "Whisper Sweet Nothings") && @ailment != nil && (@ailment.action.name == @action_name || @ailment.action.name)
+  elsif (@action_name == "Talk to Plant") && @ailment != nil && (@ailment.action.name == @action_name || @ailment.action.name)
       if @money < 1
         flash[:warning] = "You don't have enough money"
       else
@@ -176,7 +182,7 @@ class PlantsController < ApplicationController
         @plant.update(ailment_id:nil)
         current_user.update(balance:@money)
       end
-    elsif (@action_name == "Whisper Sweet Nothings") && @plant.hp < @plant.state.max_hp
+    elsif (@action_name == "Talk to Plant") && @plant.hp < @plant.state.max_hp
       if @money < 1
         flash[:warning] = "You don't have enough money"
       else
@@ -217,7 +223,6 @@ class PlantsController < ApplicationController
   end
 
   def process_question
-    # byebug
     @plant = Plant.find(params[:id])
     if params["answers"][0] == "i"
       #minus one heart when incorrect and minus $3

@@ -80,10 +80,10 @@
         <p>My Current Balance: $<%= current_user.balance  %></p>
         <% @plant = current_user.plants.sample %>
         <% action = Action.find_by(name:"Get $$$$") %>
-        <% if @plant != nil %>
-          <%= button_to "Get $$$$!", "/plants/#{@plant.id}/actions/#{action.id}" %><br>
-        <% end %>
-        <%= button_to "See All Plants", plants_path, :method =>"get" %><br>
+        <!-- <% if @plant != nil %>
+          <%= button_to "Get $$$$!", "/plants/#{@plant.id}/actions/#{action.id}"  %><br>
+        <% end %> -->
+        <%= button_to "My Flower Shop", plants_path, :method =>"get" %><br>
         <%= button_to "Buy New Plant!", new_plant_path, :method =>"get" %><br>
         <%= button_to "    Logout    ", logout_path, method: :delete %>
       </div>

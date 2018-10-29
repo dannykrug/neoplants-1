@@ -1,4 +1,0 @@
-class ActionsController < ApplicationController
-
-
-end

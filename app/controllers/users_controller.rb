@@ -12,12 +12,9 @@ class UsersController < ApplicationController
     end
     @user.balance = 10
     if @user.valid?
-      #give user ability to perform all actions
       @user.save
       flash[:notice] = "Successfully Signed Up for Neoplants"
       session[:user_id]= @user.id
-      # UserMailer.with(user:@user).welcome_email.deliver_now
-      #TO DO: associate user with actions
       redirect_to personality_quiz_path
     else
       render :new
